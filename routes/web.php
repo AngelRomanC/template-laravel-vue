@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\InventarioEquipoController;
 use App\Http\Controllers\MarcaController;
@@ -108,7 +109,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard-procesos', [DashboardController::class, 'dashboardProcesos'])
         ->name('dashboard.procesos');
 
+    // Agregar esta ruta dentro del grupo de rutas autenticadas
+    Route::post('/user/set-active-role', [AuthenticatedSessionController::class, 'setActiveRole'])
+        ->name('user.set-active-role');
 
+    // Ruta para la vista de selección de rol después del login
+    Route::get('/select-role', function () {
+        return Inertia::render('Auth/RoleSelect');
+    })->name('role.select');
 });
 
 require __DIR__ . '/auth.php';

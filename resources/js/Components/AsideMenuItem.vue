@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed } from "vue";
 //import { RouterLink } from "vue-router";
-import { Link } from "@inertiajs/vue3";
+import { Link,usePage  } from "@inertiajs/vue3";
 import { useStyleStore } from "@/stores/style.js";
 import { mdiMinus, mdiPlus } from "@mdi/js";
 import { getButtonColor } from "@/colors.js";
@@ -41,14 +41,22 @@ const asideMenuItemActiveStyle = computed(() =>
 const isDropdownActive = ref(false);
 
 const verifyPermission = () => {
+  // Obtener el rol activo de la sesión
+  const activeRole = usePage().props.auth.active_role;
+  
   if (props.item.permission) {
-    return useCan(props.item.permission)
+    return useCan(props.item.permission);
   }
   else if (props.item.role) {
-    return useRole(props.item.role)
+    // Si hay un rol activo, solo mostrar los elementos de ese rol
+    if (activeRole) {
+      return props.item.role === activeRole;
+    }
+    // Si no hay rol activo, comportamiento original
+    return useRole(props.item.role);
   }
   else {
-    return true
+    return true;
   }
 }
 

@@ -11,19 +11,13 @@ import {
   mdiGithub,
   mdiReact,
   mdiBell,
+  mdiAccountSwitch
 } from "@mdi/js";
 
 import { usePage } from "@inertiajs/vue3";
 import axios from 'axios';
 
-
-console.log('glooooooooooooooo')
-
-
 export default [
-
-
-  
   {
     isCurrentUser: true,
     menu: [
@@ -36,13 +30,9 @@ export default [
       {
         isDivider: true,
       },
-    
-      
-
-
     ],
   },
-    {
+  {
     icon: mdiThemeLightDark,
     label: 'Light/Dark',
     isDesktopNoLabel: true,
@@ -53,10 +43,15 @@ export default [
     isRol: true,
   },
   {
+    icon: mdiAccountSwitch,
+    label: "Cambiar Rol",
+    isDesktopNoLabel: true,
+    isSwitchRole: true,
+  },
+  {
     icon: mdiLogout,
     label: "Log out",
     isDesktopNoLabel: true,
     isLogout: true,
   },
- 
 ];

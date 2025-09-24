@@ -9,6 +9,7 @@ import BaseIcon from "@/components/BaseIcon.vue";
 import UserAvatarCurrentUser from "@/components/UserAvatarCurrentUser.vue";
 import NavBarMenuList from "@/components/NavBarMenuList.vue";
 import BaseDivider from "@/components/BaseDivider.vue";
+import RoleSelector from "@/components/RoleSelector.vue";
 import axios from "axios";
 
 const props = defineProps({
@@ -87,8 +88,17 @@ const itemLabel = computed(() => {
 
 const isDropdownActive = ref(false);
 
+// Agregar estado para el selector de roles
+const showRoleSelector = ref(false);
+
 const menuClick = (event) => {
   emit("menu-click", event, props.item);
+
+  if (props.item.isSwitchRole) {
+    // Mostrar el selector de roles
+    showRoleSelector.value = true;
+    return;
+  }
 
   if (props.item.menu) {
     isDropdownActive.value = !isDropdownActive.value;
@@ -162,4 +172,10 @@ onBeforeUnmount(() => {
       <NavBarMenuList :menu="item.menu" @menu-click="menuClickDropdown" />
     </div>
   </component>
+  
+  <!-- Agregar el selector de roles -->
+  <RoleSelector 
+    :show="showRoleSelector" 
+    @close="showRoleSelector = false" 
+  />
 </template>
