@@ -75,12 +75,16 @@ const itemLabel = computed(() => {
     const nombreCompleto = `${currentUser.name} ${currentUser.apellido_paterno} ${currentUser.apellido_materno}`;
     return nombreCompleto;
   } else if (props.item.isRol) {
-    const roles = usePage().props.auth.user.roles;
-    if (roles.length > 0) {
-      return roles[0].name;
-    } else {
-      return "Sin Rol"; // Cuando el user no tiene rol
+    // Obtener el rol activo de las props de auth
+    const activeRole = usePage().props.auth.active_role;
+    if (activeRole) {
+      return activeRole;
     }
+    
+    // Si no hay rol activo, mostrar el primer rol disponible
+    const roles = usePage().props.auth.roles;
+    const firstRole = Object.keys(roles)[0];
+    return firstRole || "Sin Rol";
   } else {
     return props.item.label;
   }
