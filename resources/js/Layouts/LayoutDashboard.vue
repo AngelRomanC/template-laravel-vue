@@ -12,6 +12,18 @@ import NavBar from "@/components/NavBar.vue";
 import NavBarItemPlain from "@/components/NavBarItemPlain.vue";
 import AsideMenu from "@/components/AsideMenu.vue";
 import FooterBar from "@/components/FooterBar.vue";
+import { usePage } from "@inertiajs/vue3";
+
+const { auth } = usePage().props;
+const roles = auth.user.roles; // Esto es un array de roles asignados
+
+const menuNavBarFiltered = menuNavBar.map(item => {
+  if (item.isSwitchRole) {
+    // Mostrar solo si el usuario tiene 2 roles o más
+    return roles.length >= 2 ? item : null;
+  }
+  return item;
+}).filter(Boolean); // elimina los null
 
 useMainStore().setUser({
   name: "John Doe",
@@ -57,7 +69,7 @@ const menuClick = (event, item) => {
       class="pt-14 min-h-screen w-screen transition-position lg:w-auto bg-gray-50 dark:bg-slate-800 dark:text-slate-100"
     >
       <NavBar
-        :menu="menuNavBar"
+        :menu="menuNavBarFiltered"
         :class="[
           layoutAsidePadding,
           { 'ml-60 lg:ml-0': isAsideMobileExpanded },
