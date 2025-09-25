@@ -7,7 +7,7 @@ import BaseButton from '@/components/BaseButton.vue';
 import BaseButtons from '@/components/BaseButtons.vue';
 import FormField from '@/components/FormField.vue';
 import FormControl from '@/components/FormControl.vue';
-import { mdiBallotOutline, mdiAccountBadge, mdiViewModule } from "@mdi/js";
+import { mdiBallotOutline, mdiAccountBadge, mdiViewModule,mdiCardTextOutline } from "@mdi/js";
 
 const props = defineProps({
     permissions: Object, // Permisos agrupados por módulo
@@ -18,9 +18,10 @@ const props = defineProps({
 
 const form = useForm({
     name: '',
+    description: '', // Agregar el campo descripción
     permissions: []
 });
-console.log(props.modules);
+
 const submit = () => {
     form.post(route(props.routeName + 'store'));
 };
@@ -37,11 +38,18 @@ const getModuleName = (moduleKey) => {
         <SectionTitleLineWithButton :icon="mdiBallotOutline" :title="titulo" main />
 
         <form @submit.prevent="submit" class="space-y-6">
-            <!-- Nombre del Rol -->
-            <FormField label="Nombre del Rol" :error="form.errors.name">
-                <FormControl v-model="form.name" placeholder="Ingrese el nombre del rol" required
-                    :icon="mdiAccountBadge" />
-            </FormField>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Nombre del Rol -->
+                <FormField label="Nombre del Rol" :error="form.errors.name">
+                    <FormControl v-model="form.name" placeholder="Ingrese el nombre del rol" required
+                        :icon="mdiAccountBadge" />
+                </FormField>
+                <!-- Descripción del Rol -->
+                <FormField label="Descripción" :error="form.errors.description">
+                    <FormControl v-model="form.description" placeholder="Ingrese la descripción del rol" required 
+                    :icon="mdiCardTextOutline"/>
+                </FormField>
+            </div>
 
             <!-- Grid de Módulos con Permisos -->
             <FormField label="Permisos" :error="form.errors.permissions">
@@ -80,7 +88,7 @@ const getModuleName = (moduleKey) => {
             </FormField>
 
             <!-- Botones -->
-            <BaseButtons >
+            <BaseButtons>
                 <BaseButton type="submit" color="info" label="Guardar" :loading="form.processing" outline="" />
                 <BaseButton :href="route(props.routeName + 'index')" color="danger" outline label="Cancelar" />
             </BaseButtons>

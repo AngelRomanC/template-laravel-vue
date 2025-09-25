@@ -57,10 +57,11 @@ class RoleController extends Controller
     {
         $request->validate([
             'name' => 'required|unique:roles,name',
+            'description'   => 'required|max:255',
             'permissions' => 'required|array'
         ]);
 
-        $role = Role::create(['name' => $request->name]);
+        $role = Role::create(['name' => $request->name, 'description' => $request->description]);
         $role->syncPermissions($request->permissions);
 
         return redirect()->route($this->routeName . 'index')
@@ -85,10 +86,11 @@ class RoleController extends Controller
     {
         $request->validate([
             'name' => 'required|unique:roles,name,' . $role->id,
+            'description'   => 'required|max:255',
             'permissions' => 'required|array'
         ]);
 
-        $role->update(['name' => $request->name]);
+        $role->update(['name' => $request->name, 'description' => $request->description]);
         $role->syncPermissions($request->permissions);
 
         return redirect()->route($this->routeName . 'index')
