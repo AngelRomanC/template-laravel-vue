@@ -57,7 +57,7 @@ const initializeRoles = () => {
       description: roleData.description // ← Esto ya no será undefined
     };
   });
-  console.log(userRoles.value);
+  //console.log(userRoles.value);
 
   // Establecer rol seleccionado: primero sessionStorage, luego el activo, luego el primero disponible
   const sessionRole = sessionStorage.getItem('activeRole');
@@ -218,7 +218,7 @@ const closeOnBackdrop = (event) => {
         </span>
 
         <div class="flex space-x-2">
-          <BaseButton color="gray" label="Cancelar" :disabled="isLoading" @click="$emit('close')" />
+          <BaseButton color="danger" label="Cancelar" :disabled="isLoading" @click="$emit('close')" />
           <BaseButton color="info" :label="isLoading ? 'Cambiando...' : 'Confirmar'"
             :disabled="!selectedRole || isLoading" :loading="isLoading" @click="selectRole(selectedRole)" />
         </div>
