@@ -96,7 +96,13 @@ class User extends Authenticatable
     public function getRolesArray(): Collection
     {
         return $this->roles()->get()->mapWithKeys(function ($role) {
-            return [$role['name'] => true];
+            return [
+                $role['name'] => [
+                    'active' => true,
+                    'description' => $role['description'], // Descripción desde la DB
+                    'id' => $role['id'] // ID del rol
+                ]
+            ];
         });
     }
 
@@ -125,7 +131,7 @@ class User extends Authenticatable
     {
         return $this->hasOne(UserDepartamento::class);
     }
-    
+
     // Accesor para obtener directamente el departamento_id para catalago en front create ejecutivo
     public function getDepartamentoIdAttribute()
     {
