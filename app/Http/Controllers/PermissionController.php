@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Permisos;
+//use App\Models\Permisos;
+use Spatie\Permission\Models\Permission;
 use App\Http\Requests\StorePermisosRequest;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Module;
 
-class PermisosController extends Controller
+class PermissionController extends Controller
 {
     protected string $routeName;
     protected string $source = 'Seguridad/Permisos/';
@@ -17,7 +18,7 @@ class PermisosController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->routeName = 'permisos.';
+        $this->routeName = 'permissions.';
         $this->middleware("permission:{$this->module}.index")->only(['index', 'show']);
         $this->middleware("permission:{$this->module}.store")->only(['store', 'create']);
         $this->middleware("permission:{$this->module}.update")->only(['edit', 'update']);
@@ -27,7 +28,7 @@ class PermisosController extends Controller
     public function index()
     {
         //$permisos = Permisos::all();
-        $permisos = Permisos::orderBy('id', 'desc')
+        $permisos = Permission::orderBy('id', 'desc')
             ->paginate(8)
             ->withQueryString();
 
@@ -51,7 +52,7 @@ class PermisosController extends Controller
     public function store(StorePermisosRequest $request)
     {
         //dd(request());
-        $permiso = Permisos::create([
+        $permiso = Permission::create([
             'name' => $request->name,
             'guard_name' => 'web',
             'description' => $request->description,
@@ -62,7 +63,7 @@ class PermisosController extends Controller
             ->with('success', 'Permiso creado exitosamente');
     }
 
-    public function edit(Permisos $permiso)
+    public function edit(Permission $permiso)
     {
         $modules = Module::all();
         return Inertia::render("{$this->source}Edit", [
@@ -73,7 +74,7 @@ class PermisosController extends Controller
         ]);
     }
 
-    public function update(StorePermisosRequest $request, Permisos $permiso)
+    public function update(StorePermisosRequest $request, Permission $permiso)
     {
         $permiso->update([
             'name' => $request->name,
@@ -85,7 +86,7 @@ class PermisosController extends Controller
             ->with('success', 'Permiso actualizado exitosamente');
     }
 
-    public function destroy(Permisos $permiso)
+    public function destroy(Permission $permiso)
     {
         $permiso->delete();
         return redirect()->route($this->routeName . 'index')

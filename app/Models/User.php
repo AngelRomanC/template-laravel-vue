@@ -113,31 +113,4 @@ class User extends Authenticatable
         });
     }
 
-    // app/Models/User.php
-    public function sistemas()
-    {
-        return $this->hasMany(Sistema::class, 'user_id'); // Cambia 'user_id' si tu columna se llama diferente
-    }
-    public function procesos()
-    {
-        return $this->hasMany(Proceso::class, 'user_id');
-    }
-    public function certificaciones()
-    {
-        return $this->hasMany(Certificacion::class, 'user_id');
-    }
-    //Carga la relación para el dashboard ejecutivo
-    public function departamento()
-    {
-        return $this->hasOne(UserDepartamento::class);
-    }
-
-    // Accesor para obtener directamente el departamento_id para catalago en front create ejecutivo
-    public function getDepartamentoIdAttribute()
-    {
-        return $this->departamento->departamento_id ?? null;
-    }
-
-
-
 }
