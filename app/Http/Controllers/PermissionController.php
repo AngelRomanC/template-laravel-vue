@@ -14,7 +14,7 @@ class PermissionController extends Controller
     protected string $routeName;
     protected string $source = 'Seguridad/Permisos/';
 
-    protected string $module = 'permiso';
+    protected string $module = 'permissions';
     public function __construct()
     {
         $this->middleware('auth');

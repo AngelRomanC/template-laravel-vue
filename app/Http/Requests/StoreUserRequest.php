@@ -31,28 +31,7 @@ class StoreUserRequest extends FormRequest
             'password' => ['required','string', 'min:8'],
             'roles' => ['required', 'array'],
             'roles.*' => ['integer', 'exists:roles,id'],  
-        ];
-        // Validación específica si el rol seleccionado es Ejecutivo (opcional, ajusta según tu lógica)
-        // if ($this->rol == ID_DEL_ROL_EJECUTIVO) {
-        //     $rules['departamento_id'] = 'required|exists:departamentos,id';
-        // }
-           // Validación condicional: departamento requerido si el rol es Ejecutivo
- 
-        // Buscar el nombre del rol según el ID enviado en el form
-            $rol = \Spatie\Permission\Models\Role::find($this->input('rol'));
-
-            if ($rol && $rol->name === 'Ejecutivo') {
-                // Si lo crea "Procesos" → departamento obligatorio
-                if (auth()->user()->hasRole('Procesos')) {
-                    $rules['departamento_id'] = ['required', 'integer', 'exists:departamentos,id'];
-                }
-
-                // Si lo crea Admin → no es obligatorio
-                if (auth()->user()->hasRole('Admin')) {
-                    $rules['departamento_id'] = ['nullable', 'integer', 'exists:departamentos,id'];
-                }
-            }
-   
+        ];   
         return $rules;
         
     }

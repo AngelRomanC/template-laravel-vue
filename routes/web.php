@@ -45,7 +45,7 @@ Route::middleware('auth')->group(function () {
     //Route::resource('perfiles', PerfilesController::class)->parameters(['perfiles' => 'perfiles']);
 
     //Usuarios
-    Route::resource('usuarios', controller: UserController::class)->parameters(['usuarios' => 'usuarios']);
+    Route::resource('users', controller: UserController::class);
     Route::get('/perfil', [UserController::class, 'perfil'])->name('usuarios.perfil');
     Route::post('actualizarPerfil', [UserController::class, 'updatePerfil'])->name('usuarios.update-perfil');  
 

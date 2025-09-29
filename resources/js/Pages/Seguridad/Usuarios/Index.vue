@@ -12,10 +12,9 @@ import CardBoxComponentEmpty from "@/components/CardBoxComponentEmpty.vue";
 import NotificationBar from "@/components/NotificationBar.vue";
 import SearchBar from '@/components/SearchBar.vue'
 import { ref } from 'vue'
-import { onMounted } from 'vue'
 
 const props = defineProps({
-    admin: Object,
+    users: Object,
     titulo: String,
     routeName: String,
     filters: Object,
@@ -40,13 +39,12 @@ const eliminarAdmin = (id) => {
     });
 };
 
-
 </script>
 
 <template>
     <LayoutMain>
         <SectionTitleLineWithButton :title="titulo" main :icon="mdiAccountCogOutline">
-            <BaseButton :href="'usuarios/create'" color="warning" label="Crear" :icon="mdiPlus" />
+            <BaseButton :href="route(`${props.routeName}create`)" color="warning" label="Crear" :icon="mdiPlus" />
         </SectionTitleLineWithButton>
 
         <SearchBar v-model="filters.search" :routeName="routeName" placeholder="Buscar admin por nombre..." />
@@ -59,7 +57,7 @@ const eliminarAdmin = (id) => {
             {{ $page.props.flash.error }}
         </NotificationBar>
 
-        <CardBox v-if="admin.data.length < 1">
+        <CardBox v-if="users.data.length < 1">
             <CardBoxComponentEmpty />
         </CardBox>
 
@@ -80,36 +78,41 @@ const eliminarAdmin = (id) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Sección para administradores -->
-                    <tr v-for="admin in admin.data" :key="admin.id">
+                    <!-- Sección para users -->
+                    <tr v-for="item in users.data" :key="item.id">
                         <td class="align-items-center"></td>
-                        <td data-label="Nombre">{{ admin.name }}</td>
-                        <td data-label="Apellido paterno">{{ admin.apellido_paterno }}</td>
-                        <td data-label="Apellido materno">{{ admin.apellido_materno }}</td>
-                        <td data-label="Número">{{ admin.numero }}</td>
-                        <td data-label="Email">{{ admin.email }}</td>
+                        <td data-label="Nombre">{{ item.name }}</td>
+                        <td data-label="Apellido paterno">{{ item.apellido_paterno }}</td>
+                        <td data-label="Apellido materno">{{ item.apellido_materno }}</td>
+                        <td data-label="Número">{{ item.numero }}</td>
+                        <td data-label="Email">{{ item.email }}</td>
                         <td data-label="Rol">
                             <div class="flex flex-wrap gap-1">
-                                <span v-for="role in admin.roles" :key="role.id"
-                                    class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
+                                <span v-for="role in item.roles" :key="role.id"
+                                    class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full relative group">
                                     {{ role.name }}
+                                    <span
+                                        class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max p-1 text-xs bg-gray-700 text-white rounded opacity-0 group-hover:opacity-100 transition">
+                                        {{ role.description }}
+                                    </span>
                                 </span>
+
                             </div>
                         </td>
-
                         <td class="before:hidden lg:w-1 whitespace-nowrap">
                             <BaseButtons type="justify-start lg:justify-end" no-wrap>
                                 <BaseButton color="info" :icon="mdiTagEdit" small
-                                    :href="route(`usuarios.edit`, admin.id)" />
+                                    :href="route(`${props.routeName}edit`, item.id)" />
 
                                 <BaseButton color="danger" :icon="mdiDeleteOutline" small
-                                    @click="eliminarAdmin(admin.id)" />
+                                    @click="eliminarAdmin(item.id)" />
                             </BaseButtons>
                         </td>
+
                     </tr>
                 </tbody>
             </table>
-            <Pagination :currentPage="admin.current_page" :links="admin.links" :total="admin.links.length - 2" />
+            <Pagination :currentPage="users.current_page" :links="users.links" :total="users.links.length - 2" />
         </CardBox>
 
     </LayoutMain>

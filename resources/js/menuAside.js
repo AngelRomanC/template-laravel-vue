@@ -48,7 +48,7 @@ export default [
   role: "Admin",
   menu: [
     {
-        href:"/usuarios",
+        href:"/users",
         label: "Usuarios",
         icon: mdiAccountMultiple,
         role: "Admin",

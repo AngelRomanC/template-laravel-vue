@@ -30,7 +30,6 @@ const props = defineProps({
   departamentos: Array,
   //departamento_id: Number,
 });
-
 const safeRoles = computed(() => props.roles || []);
 
 const form = useForm({
