@@ -62,8 +62,8 @@ const destroy = (id) => {
                         <tr class="border-b">
                             <th class="px-3 py-3 text-left">Nombre</th>
                             <th class="px-3 py-3 text-left">Descripción</th>
-                            <th class="px-3 py-3 text-left">Módulo</th>
-                            <th class="px-3 py-3 text-center">Acciones</th>
+                            <th class="px-3 py-3 text-left">Key-Módulo</th>
+                            <th class="px-3 py-3 text-left">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -72,7 +72,7 @@ const destroy = (id) => {
                             <td class="px-3 py-2">{{ permiso.description }}</td>
                             <td class="px-3 py-2">{{ permiso.module_key }}</td>
                             <td class="px-3 py-2 text-center">
-                                <BaseButtons>
+                                <BaseButtons >
                                     <BaseButton
                                         :href="route(`${props.routeName}edit`, permiso.id)"
                                         color="info"

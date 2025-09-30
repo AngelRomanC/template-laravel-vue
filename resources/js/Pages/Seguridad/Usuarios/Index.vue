@@ -2,15 +2,15 @@
 import Swal from "sweetalert2";
 import Pagination from '@/Shared/Pagination.vue';
 import { router } from '@inertiajs/vue3'
-import LayoutMain from '@/layouts/LayoutMain.vue';
+import LayoutMain from '@/Layouts/LayoutMain.vue';
 import { mdiTagEdit, mdiDeleteOutline, mdiInformation, mdiPlus, mdiAccountCogOutline } from "@mdi/js";
-import CardBox from "@/components/CardBox.vue";
-import SectionTitleLineWithButton from "@/components/SectionTitleLineWithButton.vue";
-import BaseButtons from "@/components/BaseButtons.vue";
-import BaseButton from "@/components/BaseButton.vue";
-import CardBoxComponentEmpty from "@/components/CardBoxComponentEmpty.vue";
-import NotificationBar from "@/components/NotificationBar.vue";
-import SearchBar from '@/components/SearchBar.vue'
+import CardBox from "@/Components/CardBox.vue";
+import SectionTitleLineWithButton from "@/Components/SectionTitleLineWithButton.vue";
+import BaseButtons from "@/Components/BaseButtons.vue";
+import BaseButton from "@/Components/BaseButton.vue";
+import CardBoxComponentEmpty from "@/Components/CardBoxComponentEmpty.vue";
+import NotificationBar from "@/Components/NotificationBar.vue";
+import SearchBar from '@/Components/SearchBar.vue'
 import { ref } from 'vue'
 
 const props = defineProps({
@@ -112,7 +112,7 @@ const eliminarAdmin = (id) => {
                     </tr>
                 </tbody>
             </table>
-            <Pagination :currentPage="users.current_page" :links="users.links" :total="users.links.length - 2" />
+            <Pagination :currentPage="users.current_page" :links="users.links" :total="users.last_page" />
         </CardBox>
 
     </LayoutMain>
