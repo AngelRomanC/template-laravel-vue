@@ -26,9 +26,7 @@ class DatabaseSeeder extends Seeder
             ModuleSeeder::class,
             PermisosSeeder::class,
             AdminSeeder::class,
-            // DatosSeeder::class,
-            // MarcaSeeder::class,
-
+          
 
         ]);
     }

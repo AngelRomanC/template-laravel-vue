@@ -15,8 +15,15 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        $rol1 = Role::create(['name' => 'Admin']);
-        $rol2 = Role::create(['name' => 'Desarrollador']);  
+        $rol1 = Role::create([
+            'name' => 'Admin',
+            'description' => 'Acceso completo al sistema, puede gestionar usuarios, roles y todas las funcionalidades'
+        ]);
+
+        $rol2 = Role::create([
+            'name' => 'Desarrollador',
+            'description' => 'Acceso a módulos de desarrollo y configuración, puede gestionar ciertas funcionalidades técnicas'
+        ]);
 
     }
 }

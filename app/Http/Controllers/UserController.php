@@ -73,11 +73,10 @@ class UserController extends Controller
             $request->password
         ));
 
-        return redirect()->route("{$this->routeName}index")->with('success', 'Usuario Admin generado con éxito');
+        return redirect()->route("{$this->routeName}index")->with('success', '¡Usuario creado con éxito!');
     }
     public function edit(User $user)
     {
-        //$usuario = User::with('roles:id,name')->findOrFail($id);
         $user->load('roles:id,name');
 
         return Inertia::render("Seguridad/Usuarios/Edit", [
@@ -89,18 +88,16 @@ class UserController extends Controller
     }
     public function update(UpdateUserRequest $request, User $user)
     {
-        //dd($user);
         $data = $request->validated();
 
-        // Si envías password desde el formulario, lo encriptas y actualizas
         if (empty($data['password'])) {
             unset($data['password']);
         }
-        
+
         $user->update($data);
         $user->syncRoles($request->roles);
 
-        return redirect()->route("{$this->routeName}index")->with('success', '¡Usuario Admin actualizado correctamente!');
+        return redirect()->route("{$this->routeName}index")->with('success', '¡Usuario actualizado correctamente!');
     }
 
     public function destroy($id)
@@ -108,6 +105,6 @@ class UserController extends Controller
         $usuario = User::find($id);
         $usuario->delete();
 
-        return redirect()->route("{$this->routeName}index")->with('success', 'Usuario eliminado con éxito');
+        return redirect()->route("{$this->routeName}index")->with('success', '¡Usuario eliminado con éxito!');
     }
 }

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 //use App\Models\Permisos;
+use App\Http\Requests\UpdatePermissionRequest;
 use Spatie\Permission\Models\Permission;
 use App\Http\Requests\StorePermisosRequest;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Module;
 
@@ -51,7 +51,6 @@ class PermissionController extends Controller
 
     public function store(StorePermisosRequest $request)
     {
-        //dd(request());
         $permiso = Permission::create([
             'name' => $request->name,
             'guard_name' => 'web',
@@ -63,32 +62,34 @@ class PermissionController extends Controller
             ->with('success', 'Permiso creado exitosamente');
     }
 
-    public function edit(Permission $permiso)
+    public function edit(Permission $permission)
     {
         $modules = Module::all();
         return Inertia::render("{$this->source}Edit", [
-            'permiso' => $permiso,
+            'permiso' => $permission,
             'modules' => $modules,
             'titulo' => 'Editar Permiso',
             'routeName' => $this->routeName
         ]);
     }
 
-    public function update(StorePermisosRequest $request, Permission $permiso)
+    public function update(UpdatePermissionRequest $request, Permission $permission)
     {
-        $permiso->update([
+        $permission->update([
             'name' => $request->name,
             'description' => $request->description,
             'module_key' => $request->module_key
         ]);
+        //$permission->update($request->validated());
+
 
         return redirect()->route($this->routeName . 'index')
             ->with('success', 'Permiso actualizado exitosamente');
     }
 
-    public function destroy(Permission $permiso)
+    public function destroy(Permission $permission)
     {
-        $permiso->delete();
+        $permission->delete();
         return redirect()->route($this->routeName . 'index')
             ->with('success', 'Permiso eliminado exitosamente');
     }
