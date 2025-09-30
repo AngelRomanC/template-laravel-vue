@@ -45,7 +45,7 @@ const asideLgCloseClick = (event) => {
           
           <!-- Texto con estilo profesional -->
           <span class="text-lg font-bold text-center text-gray-800 dark:text-white">
-            DOCUMENTACIÓN <span class="text-blue-600">PRYSE</span>
+            Logo <span class="text-blue-600">Logo</span>
           </span>
         </div>
       </div>
