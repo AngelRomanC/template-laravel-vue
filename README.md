@@ -34,19 +34,24 @@ La idea es contar con una estructura lista para trabajar, con autenticación, ro
    cd tu-repo
 
 2. Instalar dependencias PHP
+    ```bash
     composer install
 
 3. Instalar dependencias Node
+    ```bash
     npm install
     
 4. Copiar archivo de entorno y configurar las variables
+    ```bash
     cp .env.example .env
     php artisan key:generate
 
 5. Migrar y seedear la dase de datos
+    ```bash
     php artisan migrate --seed
 
 6. Levantar el proyecto
+    ```bash
     php artisan serve
     npm run dev
 
