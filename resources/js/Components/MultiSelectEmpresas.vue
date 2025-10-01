@@ -1,6 +1,6 @@
 <script setup>
 import { ref, watch, computed, onMounted, onUnmounted } from 'vue';
-import FormControlIcon from '@/components/FormControlIcon.vue';
+import FormControlIcon from '@/Components/FormControlIcon.vue';
 
 const props = defineProps({
   empresas: {
