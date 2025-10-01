@@ -11,7 +11,7 @@ import { mdiBallotOutline, mdiPencil,mdiDelete,mdiPlus,mdiAccountCogOutline  } f
 import Swal from "sweetalert2";
 import Pagination from '@/Shared/Pagination.vue';
 import { router } from '@inertiajs/vue3'
-import NotificationBar from '@/components/NotificationBar.vue'
+import NotificationBar from '@/Components/NotificationBar.vue'
 
 
 
