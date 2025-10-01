@@ -7,10 +7,10 @@ import menuAside from "@/menuAside.js";
 import menuNavBar from "@/menuNavBar.js";
 import { useMainStore } from "@/stores/main.js";
 import { useStyleStore } from "@/stores/style.js";
-import BaseIcon from "@/components/BaseIcon.vue";
+import BaseIcon from "@/Components/BaseIcon.vue";
 import FormControl from "@/Components/FormControl.vue";
 import NavBar from "@/Components/NavBar.vue";
-import NavBarItemPlain from "@/components/NavBarItemPlain.vue";
+import NavBarItemPlain from "@/Components/NavBarItemPlain.vue";
 import AsideMenu from "@/Components/AsideMenu.vue";
 import FooterBar from "@/Components/FooterBar.vue";
 

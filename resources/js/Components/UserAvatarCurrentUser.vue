@@ -1,5 +1,5 @@
 <script setup>
-import UserAvatar from "@/components/UserAvatar.vue";
+import UserAvatar from "@/Components/UserAvatar.vue";
 import { usePage } from "@inertiajs/vue3";
 import { computed } from "vue";
 

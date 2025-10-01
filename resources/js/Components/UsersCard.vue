@@ -72,7 +72,7 @@
   
   <script setup>
   import { ref } from 'vue';
-  import CardBox from "@/components/CardBox.vue";
+  import CardBox from "@/Components/CardBox.vue";
 
   
   const props = defineProps({

@@ -1,11 +1,11 @@
 <script setup>
 import { mdiCog } from "@mdi/js";
-import CardBox from "@/components/CardBox.vue";
-import NumberDynamic from "@/components/NumberDynamic.vue";
-import BaseIcon from "@/components/BaseIcon.vue";
-import BaseLevel from "@/components/BaseLevel.vue";
-import PillTagTrend from "@/components/PillTagTrend.vue";
-import BaseButton from "@/components/BaseButton.vue";
+import CardBox from "@/Components/CardBox.vue";
+import NumberDynamic from "@/Components/NumberDynamic.vue";
+import BaseIcon from "@/Components/BaseIcon.vue";
+import BaseLevel from "@/Components/BaseLevel.vue";
+import PillTagTrend from "@/Components/PillTagTrend.vue";
+import BaseButton from "@/Components/BaseButton.vue";
 
 defineProps({
   number: {

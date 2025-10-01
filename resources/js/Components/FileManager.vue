@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { mdiEye, mdiTrashCan } from "@mdi/js";
-import BaseButton from "@/components/BaseButton.vue";
+import BaseButton from "@/Components/BaseButton.vue";
 import FileUploader from "@/Components/FileUploader.vue";
 
 const props = defineProps({

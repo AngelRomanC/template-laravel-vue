@@ -24,9 +24,9 @@
 
 <script>
 import { router } from '@inertiajs/vue3'
-import BaseLevel from "@/components/BaseLevel.vue"
-import BaseButtons from "@/components/BaseButtons.vue"
-import BaseButton from "@/components/BaseButton.vue"
+import BaseLevel from "@/Components/BaseLevel.vue"
+import BaseButtons from "@/Components/BaseButtons.vue"
+import BaseButton from "@/Components/BaseButton.vue"
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
 import { ref, computed } from "vue"

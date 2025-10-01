@@ -22,7 +22,7 @@
   
   <script setup>
   import { router } from '@inertiajs/vue3';
-  import CardBox from "@/components/CardBox.vue";
+  import CardBox from "@/Components/CardBox.vue";
 
   
   const props = defineProps({

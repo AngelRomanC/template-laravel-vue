@@ -3,7 +3,7 @@ import { ref, computed, useSlots } from "vue";
 import { mdiClose } from "@mdi/js";
 import { colorsBgLight, colorsOutline } from "@/colors.js";
 import BaseLevel from "@/Components/BaseLevel.vue";
-import BaseIcon from "@/components/BaseIcon.vue";
+import BaseIcon from "@/Components/BaseIcon.vue";
 import BaseButton from "@/Components/BaseButton.vue";
 
 const props = defineProps({

@@ -3,10 +3,10 @@ import { computed, ref } from "vue";
 import { useMainStore } from "@/stores/main";
 import { mdiCheckDecagram } from "@mdi/js";
 import BaseLevel from "@/Components/BaseLevel.vue";
-import UserAvatarCurrentUser from "@/components/UserAvatarCurrentUser.vue";
+import UserAvatarCurrentUser from "@/Components/UserAvatarCurrentUser.vue";
 import CardBox from "@/Components/CardBox.vue";
 import FormCheckRadio from "@/Components/FormCheckRadio.vue";
-import PillTag from "@/components/PillTag.vue";
+import PillTag from "@/Components/PillTag.vue";
 
 const mainStore = useMainStore();
 
