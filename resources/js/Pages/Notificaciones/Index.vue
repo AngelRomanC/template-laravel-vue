@@ -60,8 +60,8 @@ import CardBox from '@/Components/CardBox.vue';
 import CardBoxComponentEmpty from '@/Components/CardBoxComponentEmpty.vue';
 import NotificationBar from '@/Components/NotificationBar.vue';
 import { mdiInformation, mdiRead, mdiTrashCan } from '@mdi/js';
-import BaseButtons from "@/components/BaseButtons.vue";
-import BaseButton from "@/components/BaseButton.vue";
+import BaseButtons from "@/Components/BaseButtons.vue";
+import BaseButton from "@/Components/BaseButton.vue";
 
 export default {
   props: {

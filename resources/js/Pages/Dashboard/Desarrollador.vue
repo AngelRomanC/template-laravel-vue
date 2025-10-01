@@ -3,10 +3,10 @@ import { Head } from "@inertiajs/vue3";
 import LayoutDashboard from "@/Layouts/LayoutDashboard.vue";
 import SectionMain from "@/Components/SectionMain.vue";
 import SectionTitleLineWithButton from "@/Components/SectionTitleLineWithButton.vue";
-import CardBox from "@/components/CardBox.vue";
-import BaseButton from "@/components/BaseButton.vue";
+import CardBox from "@/Components/CardBox.vue";
+import BaseButton from "@/Components/BaseButton.vue";
 import { mdiArrowRight, mdiCodeBraces } from "@mdi/js";
-import { computed } from 'vue'; // <-- Añade esta importación
+import { computed } from 'vue'; 
 const props = defineProps({
   sistemasAsignados: Number,
   sistemasEnDesarrollo: Number,

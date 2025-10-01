@@ -1,12 +1,12 @@
 <script setup>
 import { useForm } from '@inertiajs/vue3';
-import LayoutMain from '@/layouts/LayoutMain.vue';
-import CardBox from '@/components/CardBox.vue';
-import SectionTitleLineWithButton from '@/components/SectionTitleLineWithButton.vue';
-import BaseButton from '@/components/BaseButton.vue';
-import BaseButtons from '@/components/BaseButtons.vue';
-import FormField from '@/components/FormField.vue';
-import FormControl from '@/components/FormControl.vue';
+import LayoutMain from '@/Layouts/LayoutMain.vue';
+import CardBox from '@/Components/CardBox.vue';
+import SectionTitleLineWithButton from '@/Components/SectionTitleLineWithButton.vue';
+import BaseButton from '@/Components/BaseButton.vue';
+import BaseButtons from '@/Components/BaseButtons.vue';
+import FormField from '@/Components/FormField.vue';
+import FormControl from '@/Components/FormControl.vue';
 import { mdiBallotOutline, mdiAccountBadge, mdiViewModule,mdiCardTextOutline } from "@mdi/js";
 
 const props = defineProps({

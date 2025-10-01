@@ -5,7 +5,7 @@ import BaseButton from '@/Components/BaseButton.vue';
 import CardBox from '@/Components/CardBox.vue';
 import { mdiAccountKey, mdiCheck, mdiShieldAccount } from '@mdi/js';
 import BaseIcon from '@/Components/BaseIcon.vue';
-import LayoutGuest from '@/layouts/LayoutGuest.vue'
+import LayoutGuest from '@/Layouts/LayoutGuest.vue'
 
 
 const userRoles = ref([]);

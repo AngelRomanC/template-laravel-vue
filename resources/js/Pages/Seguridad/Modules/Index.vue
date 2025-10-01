@@ -1,15 +1,15 @@
 <script setup>
 import { ref } from 'vue'
-import LayoutMain from '@/layouts/LayoutMain.vue'
-import BaseButton from '@/components/BaseButton.vue'
-import BaseButtons from "@/components/BaseButtons.vue"
-import SectionTitleLineWithButton from "@/components/SectionTitleLineWithButton.vue"
-import CardBox from "@/components/CardBox.vue"
+import LayoutMain from '@/Layouts/LayoutMain.vue'
+import BaseButton from '@/Components/BaseButton.vue'
+import BaseButtons from "@/Components/BaseButtons.vue"
+import SectionTitleLineWithButton from "@/Components/SectionTitleLineWithButton.vue"
+import CardBox from "@/Components/CardBox.vue"
 import { mdiBallotOutline, mdiPlus, mdiDelete, mdiPencil } from "@mdi/js"
 import Pagination from '@/Shared/Pagination.vue'
 import { router } from '@inertiajs/vue3'
 import Swal from "sweetalert2";
-import NotificationBar from '@/components/NotificationBar.vue'
+import NotificationBar from '@/Components/NotificationBar.vue'
 
 
 const props = defineProps({
