@@ -1,0 +1,16 @@
+{
+  "providers": ["node", "php", "composer"],
+  "phases": {
+    "install": {
+      "dependsOn": ["setup"],
+      "cmds": []
+    },
+    "build": {
+      "dependsOn": ["install"],
+      "cmds": []
+    }
+  },
+  "start": {
+    "cmd": "/start-container.sh"
+  }
+}
