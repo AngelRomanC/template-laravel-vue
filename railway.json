@@ -6,8 +6,7 @@
 
   },
   "deploy": {
-    "startCommand": "php artisan migrate --force && php artisan db:seed --class=DatabaseSeeder && php-fpm -R && nginx -g 'daemon off;'",
-
+    "startCommand": "php-fpm -R && nginx -g 'daemon off;'",
     "healthcheckPath": "/",
     "healthcheckTimeout": 300
   },
