@@ -10,3 +10,8 @@
     "healthcheckPath": "/",
     "healthcheckTimeout": 300
   },
+  "php": {
+    "version": "8.2",
+    "extensions": ["gd", "bcmath", "pdo_mysql", "redis", "curl", "dom", "fileinfo", "mbstring", "openssl", "tokenizer", "xml", "zip"]
+  }
+}
