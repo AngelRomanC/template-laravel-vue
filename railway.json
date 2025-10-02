@@ -1,34 +1,23 @@
 {
-  "$schema": "https://railway.app/railway.schema.json",
+  "$schema": "https://railway.com/railway.schema.json",
   "build": {
-    "builder": "nixpacks",
+    "builder": "NIXPACKS",
     "buildCommand": "composer install --no-dev --optimize-autoloader && npm ci && npm run build && php artisan config:cache && php artisan route:cache && php artisan view:cache && php artisan storage:link && php artisan optimize"
   },
   "deploy": {
-    "startCommand": "php artisan migrate --force && php artisan db:seed --class=DatabaseSeeder && php-fpm -R && nginx -g 'daemon off;'",
+    "runtime": "V2",
+    "numReplicas": 1,
+    "startCommand": "php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=${PORT}",
     "healthcheckPath": "/",
-    "healthcheckTimeout": 300
-  },
-  "php": {
-    "version": "8.2",
-    "extensions": [
-      "gd",
-      "bcmath",
-      "pdo_mysql",
-      "redis",
-      "curl",
-      "dom",
-      "fileinfo",
-      "mbstring",
-      "openssl",
-      "tokenizer",
-      "xml",
-      "zip"
-    ]
-  },
-  "nginx": {
-    "root": "/app/public",
-    "index": "index.php",
-    "try_files": "$uri $uri/ /index.php?$query_string"
+    "sleepApplication": false,
+    "useLegacyStacker": false,
+    "multiRegionConfig": {
+      "us-east4-eqdc4a": {
+        "numReplicas": 1
+      }
+    },
+    "restartPolicyType": "ON_FAILURE",
+    "healthcheckTimeout": 300,
+    "restartPolicyMaxRetries": 10
   }
 }
