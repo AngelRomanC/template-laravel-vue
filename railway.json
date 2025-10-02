@@ -1,23 +1,13 @@
 {
-  "$schema": "https://railway.com/railway.schema.json",
+  "$schema": "https://railway.app/railway.schema.json",
   "build": {
     "builder": "NIXPACKS",
-    "buildCommand": "composer install --no-dev --optimize-autoloader && npm ci && npm run build && php artisan config:cache && php artisan route:cache && php artisan view:cache && php artisan storage:link && php artisan optimize"
+    "buildCommand": "composer install --no-dev --optimize-autoloader && npm ci && npm run build"
   },
   "deploy": {
-    "runtime": "V2",
-    "numReplicas": 1,
-    "startCommand": "php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=${PORT}",
+    "preDeployCommand": "php artisan migrate --force && php artisan db:seed --class=DatabaseSeeder",
+    "startCommand": "php artisan serve --host=0.0.0.0 --port=$PORT",
     "healthcheckPath": "/",
-    "sleepApplication": false,
-    "useLegacyStacker": false,
-    "multiRegionConfig": {
-      "us-east4-eqdc4a": {
-        "numReplicas": 1
-      }
-    },
-    "restartPolicyType": "ON_FAILURE",
-    "healthcheckTimeout": 300,
-    "restartPolicyMaxRetries": 10
+    "healthcheckTimeout": 30
   }
 }

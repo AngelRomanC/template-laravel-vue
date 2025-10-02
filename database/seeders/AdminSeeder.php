@@ -19,7 +19,8 @@ class AdminSeeder extends Seeder
   {
     DB::table('users')->insert(['name' => 'Admin', 'apellido_paterno' => 'Admin', 'apellido_materno' => 'Admin', 'numero' => '7770000006', 'email' => 'admin@gmail.com', 'email_verified_at' => '2024-01-17 04:50:32', 'password' => Hash::make('12345678'), 'role' => 'Admin']);
     DB::table('users')->insert(['name' => 'Miguel', 'apellido_paterno' => 'Dev', 'apellido_materno' => 'Devs', 'numero' => '7770001236', 'email' => 'miguel@gmail.com', 'email_verified_at' => '2024-01-17 04:50:32', 'password' => Hash::make('12345678'), 'role' => 'Desarrollador']);
-    DB::table('users')->insert(['name' => 'Moises', 'apellido_paterno' => 'Dev', 'apellido_materno' => 'Devs', 'numero' => '7770001237', 'email' => 'moi@gmail.com', 'email_verified_at' => '2024-01-17 04:50:32', 'password' => Hash::make('12345678'), 'role' => 'Desarrollador']);
+    DB::table('users')->insert(values: ['name' => 'Moises', 'apellido_paterno' => 'Dev', 'apellido_materno' => 'Devs', 'numero' => '7770001237', 'email' => 'moi@gmail.com', 'email_verified_at' => '2024-01-17 04:50:32', 'password' => Hash::make('12345678'), 'role' => 'Desarrollador']);
+    DB::table('users')->insert(values: ['name' => 'Moises', 'apellido_paterno' => 'Dev', 'apellido_materno' => 'Devs', 'numero' => '7770001230', 'email' => 'user@gmail.com', 'email_verified_at' => '2024-01-17 04:50:32', 'password' => Hash::make('12345678'), 'role' => 'Desarrollador']);
 
 
 
