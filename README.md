@@ -30,8 +30,8 @@ La idea es contar con una estructura lista para trabajar, con autenticación, ro
 
 1. Clonar el repositorio  
    ```bash
-   git clone https://github.com/tu-usuario/tu-repo.git
-   cd tu-repo
+   git clone https://github.com/AngelRomanC/template-laravel-vue.git
+   cd template-laravel-vue
 
 2. Instalar dependencias PHP
     ```bash
