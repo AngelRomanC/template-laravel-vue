@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
 //laravel permission
 use Spatie\Permission\Traits\HasRoles;
+use App\Traits\DateFormat;
 
 
 
@@ -25,6 +26,7 @@ class User extends Authenticatable
     // use TwoFactorAuthenticatable;
     use HasRoles;
     use Notifiable;
+    use DateFormat;
 
 
     /**
@@ -61,6 +63,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    protected $appends = ['created_at_formatted'];
 
     //laravel permission
 
@@ -111,6 +114,11 @@ class User extends Authenticatable
         return $this->getAllPermissions()->mapWithKeys(function ($permission) {
             return [$permission['name'] => true];
         });
+    }
+
+    public function getCreatedAtFormattedAttribute()
+    {
+        return $this->textFormatDate($this->created_at);
     }
 
 }

@@ -72,6 +72,7 @@ const eliminarAdmin = (id) => {
                         <th>Apellido materno</th>
                         <th>Teléfono</th>
                         <th>Email</th>
+                        <th>Fecha Creación</th>
                         <th>Rol</th>
                         <th></th>
                         <th />
@@ -86,6 +87,7 @@ const eliminarAdmin = (id) => {
                         <td data-label="Apellido materno">{{ item.apellido_materno }}</td>
                         <td data-label="Número">{{ item.numero }}</td>
                         <td data-label="Email">{{ item.email }}</td>
+                        <td>{{ item.created_at_formatted.human  }}</td>
                         <td data-label="Rol">
                             <div class="flex flex-wrap gap-1">
                                 <span v-for="role in item.roles" :key="role.id"
